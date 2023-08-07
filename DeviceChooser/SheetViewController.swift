@@ -13,7 +13,7 @@ protocol SheetViewControllerDelegate: AnyObject {
 }
 
 class SheetViewController: UIViewController {
-    var buttonCount = 0 // used to place the first button placed in the center of the view. Reset are placed relative to the button before
+    var buttonCount = 0 // used to place the first button placed 100 pixels down from the view top. Reset of the buttons are each placed relative to the button preceeding
     weak var delegate: SheetViewControllerDelegate?
     
     var iphoneButton = TintedButton(title: "  iPhone", icon: "iphone", bgColor: .systemBlue)
@@ -61,17 +61,17 @@ class SheetViewController: UIViewController {
         if buttonCount == 0{
             
             NSLayoutConstraint.activate([
-                            button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                button.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
                 button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                            button.widthAnchor.constraint(equalToConstant: CGFloat(btWidth)),
-                            button.heightAnchor.constraint(equalToConstant: CGFloat(btHeight))
+                button.widthAnchor.constraint(equalToConstant: CGFloat(btWidth)),
+                button.heightAnchor.constraint(equalToConstant: CGFloat(btHeight))
             ])
         }
         else {
             let topAnchorElement : AnyObject = TintedButton.buttons[buttonCount-1]
             NSLayoutConstraint.activate([
-                
-                button.topAnchor.constraint(equalTo: (topAnchorElement.bottomAnchor) as NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: CGFloat(distanceBetweenButtons)),                button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                button.topAnchor.constraint(equalTo: (topAnchorElement.bottomAnchor) as NSLayoutAnchor<NSLayoutYAxisAnchor>, constant: CGFloat(distanceBetweenButtons)),
+                button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                 button.widthAnchor.constraint(equalToConstant: CGFloat(btWidth)),
                 button.heightAnchor.constraint(equalToConstant: CGFloat(btHeight))
             ])
