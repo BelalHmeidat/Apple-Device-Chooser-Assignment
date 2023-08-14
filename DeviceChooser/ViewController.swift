@@ -7,13 +7,16 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController {
 
+    
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var label: UILabel!
-    
-    
     @IBOutlet var button: UIButton!
+    
+    
     @IBAction func showSheet(_ sender: UIButton) {
         showMyViewControllerInACustomizedSheet()
     }
@@ -39,8 +42,6 @@ class ViewController: UIViewController {
     }
 }
 
-
-    
 extension ViewController: SheetViewControllerDelegate {
     func didSelectOption(image: UIImage, labelText: String) {
         imageView.image = image

@@ -16,35 +16,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mac-iPhone-Apple-Watch-iPad-The-Apple-Post-960x640" translatesAutoresizingMaskIntoConstraints="NO" id="UVf-TL-zEp">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="All_Products" translatesAutoresizingMaskIntoConstraints="NO" id="UVf-TL-zEp">
                                 <rect key="frame" x="46.666666666666657" y="239" width="300" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="6Y7-b1-Tqv"/>
                                     <constraint firstAttribute="height" constant="300" id="Y8j-Bk-aWw"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple Product Line" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRg-F5-lSe">
-                                <rect key="frame" x="124" y="509" width="145" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZv-Bf-aTo">
-                                <rect key="frame" x="116.66666666666669" y="709" width="160" height="34.333333333333371"/>
+                                <rect key="frame" x="116.66666666666669" y="690" width="160" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="   Choose Product" cornerStyle="small"/>
                                 <connections>
                                     <action selector="showSheet:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7ZX-21-csF"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple Product Line" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRg-F5-lSe">
+                                <rect key="frame" x="124" y="549" width="145" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hZv-Bf-aTo" firstAttribute="top" secondItem="LRg-F5-lSe" secondAttribute="bottom" constant="179" id="Byz-lf-GZr"/>
+                            <constraint firstItem="LRg-F5-lSe" firstAttribute="top" secondItem="UVf-TL-zEp" secondAttribute="bottom" constant="10" id="ACE-rU-dku"/>
+                            <constraint firstItem="hZv-Bf-aTo" firstAttribute="top" secondItem="LRg-F5-lSe" secondAttribute="bottom" constant="120" id="Byz-lf-GZr"/>
                             <constraint firstItem="hZv-Bf-aTo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Iy7-Vb-ePq"/>
                             <constraint firstItem="UVf-TL-zEp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="180" id="j8X-Tb-Lwb"/>
-                            <constraint firstItem="LRg-F5-lSe" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="450" id="kmN-8z-lMa"/>
                             <constraint firstItem="UVf-TL-zEp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tNl-JB-3B8"/>
                             <constraint firstItem="LRg-F5-lSe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wUH-wp-nFI"/>
                         </constraints>
@@ -61,7 +61,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Mac-iPhone-Apple-Watch-iPad-The-Apple-Post-960x640" width="960" height="640"/>
+        <image name="All_Products" width="960" height="640"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

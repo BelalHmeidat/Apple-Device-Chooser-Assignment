@@ -20,18 +20,18 @@ class TintedButton: UIButton{
         fatalError("init(coder:) has not been implemented")
     }
     
-    static var buttons : [UIButton] = []
+//    static var buttons : [UIButton] = []
     
-    init(title: String, icon: String, bgColor: UIColor ){
+    init(title: String, icon: UIImage, bgColor: UIColor ){
         super.init(frame: .zero)
         configuration = .tinted()
         configuration?.title = title
-        configuration?.image = UIImage(systemName: icon)
+        configuration?.image = icon
         configuration?.baseBackgroundColor = bgColor
         configuration?.baseForegroundColor = bgColor
         configuration?.cornerStyle = .small
         translatesAutoresizingMaskIntoConstraints = false
-        TintedButton.buttons.append(self)
+//        TintedButton.buttons.append(self)
     }
     
 }

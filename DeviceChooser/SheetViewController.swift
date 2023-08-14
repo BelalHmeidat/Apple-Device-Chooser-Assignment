@@ -12,53 +12,115 @@ protocol SheetViewControllerDelegate: AnyObject {
     func didSelectOption(image: UIImage, labelText: String)
 }
 
+
 class SheetViewController: UIViewController {
-    var buttonCount = 0 // used to place the first button placed 100 pixels down from the view top. Reset of the buttons are each placed relative to the button preceeding
+    enum Product {
+        case iPhone
+        case iPad
+      case macbook
+        
+        var name: String {
+            switch self {
+            case .iPhone:
+                return "iPhone"
+            case .iPad:
+                return "iPad"
+            case .macbook:
+                return "Macbook"
+            }
+        }
+        var image : UIImage{
+            switch self{
+            case .iPhone :
+                return UIImage(named: "iPhone.jpg")!
+            case .iPad :
+                return UIImage(named: "iPad.jpeg")!
+            case .macbook :
+                return UIImage(named: "Macbook.jpg")!
+            }
+        }
+        var icon : UIImage {
+            switch self {
+            case .iPhone :
+                return UIImage(systemName: "iphone")!
+            case .iPad :
+                return UIImage(systemName: "ipad.gen1")!
+            case .macbook:
+                return UIImage(systemName: "laptopcomputer")!
+            }
+        
+        }
+        
+        var color : UIColor {
+            switch self{
+            case .iPhone :
+                 return UIColor(named: "iPhoneColor")!
+                
+            case .iPad :
+                return UIColor(named: "iPadColor")!
+            case .macbook :
+                return UIColor(named: "MacColor")!
+            }
+        }
+        
+        var action : Selector{
+            switch self {
+            case .iPhone :
+                return #selector(iphoneButtonAction)
+                
+            case .iPad :
+                return #selector(ipadButtonAction)
+            case .macbook :
+                return #selector(macButtonAction)
+            }
+        }
+      
+    }
+    var products : [Product] = [.iPhone, .iPad, .macbook]
+    
+    
     weak var delegate: SheetViewControllerDelegate?
     
-    var iphoneButton = TintedButton(title: "  iPhone", icon: "iphone", bgColor: .systemBlue)
-    var ipadButton = TintedButton(title: "  iPad", icon: "ipad.gen1", bgColor: .systemTeal)
-    var macButton = TintedButton(title: "  Macbook", icon: "laptopcomputer", bgColor: .systemIndigo)
     
-    let distanceBetweenButtons = 30
-    let btWidth = 250
-    let btHeight = 50
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        createAllButtons()
 
-        view.addSubview(iphoneButton)
-        layoutButton(button: iphoneButton, space: 100)
-        addFuncToButton(button: iphoneButton, action: #selector(iphoneButtonAction))
+    }
     
-        view.addSubview(ipadButton)
-        layoutButton(button: ipadButton, space: 180)
-        addFuncToButton(button: ipadButton, action: #selector(ipadButtonAction))
-        
-        view.addSubview(macButton)
-        layoutButton(button: macButton, space: 260)
-        addFuncToButton(button: macButton, action: #selector(macButtonAction))
-
-        
-        
-        
-    
+    func createAllButtons(){
+        var i = 1
+        for product in products{
+            let bt = makeButton(product: product)
+            view.addSubview(bt)
+            layoutButton(button: bt, space: CGFloat(100 * i))
+            bt.addTarget(self, action: product.action, for: .touchUpInside)
+            i+=1
+        }
     }
 
-    func makeButton(name : String, color : UIColor) -> UIButton{
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(name, for: .normal)
-        button.backgroundColor = color
+    func makeButton(product: Product) -> UIButton{
+//        let button = UIButton()
+//        button.configuration = .tinted()
+//        button.configuration?.title = product.name
+//        button.configuration?.baseBackgroundColor = product.color
+//        button.configuration?.baseForegroundColor = product.color
+//        button.configuration?.image = product.icon
+//        button.configuration?.cornerStyle = .small
+//        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = TintedButton(title: product.name, icon: product.icon, bgColor: product.color)
 
         
         return button
     }
     
-    func layoutButton(button : UIButton, space: Int){
-        
-            
+    
+    func layoutButton(button : UIButton, space: CGFloat){
+        let btWidth = 250
+        let btHeight = 50
         NSLayoutConstraint.activate([
             button.centerYAnchor.constraint(equalTo: view.topAnchor, constant: CGFloat(space)),
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -66,37 +128,35 @@ class SheetViewController: UIViewController {
             button.heightAnchor.constraint(equalToConstant: CGFloat(btHeight))
         ])
     }
-        
-
     
-    func addFuncToButton(button: UIButton, action: Selector){
-        button.addTarget(self, action: action, for: .touchUpInside)
-
-    }
-
+    
 
     @objc func iphoneButtonAction(_ sender: UIButton){
-        guard let image = UIImage(named: "iphonex_front_back_glass_big.jpg.large.jpg") else {return}
-        delegate?.didSelectOption(image: image, labelText: "iPhone")
+        delegate?.didSelectOption(image: Product.iPhone.image, labelText: Product.iPhone.name)
         dismiss(animated: true, completion: nil)
-        buttonCount = 0
+    
     }
     
     @objc func ipadButtonAction(_ sender: UIButton){
-        guard let image = UIImage(named: "g4SGRalYN2leGXDf.medium.jpg") else {return}
-        delegate?.didSelectOption(image: image, labelText: "iPad")
+        delegate?.didSelectOption(image: Product.iPad.image, labelText: Product.iPad.name)
         dismiss(animated: true, completion: nil)
-        buttonCount = 0
+    
 
     }
     
     @objc func macButtonAction(_ sender: UIButton){
-        guard let image = UIImage(named: "macbook-2048px-9765.jpg") else {return}
-        delegate?.didSelectOption(image: image, labelText: "Macbook")
+        delegate?.didSelectOption(image: Product.macbook.image, labelText: Product.macbook.name)
         dismiss(animated: true, completion: nil)
-        buttonCount = 0
+    
 
     }
+    
+    
+// Doesn't work
+//     @objc func buttonFunction(image : UIImage, text: String, _ sender : UIButton){
+//        delegate?.didSelectOption(image: image, labelText: text)
+//        dismiss(animated: true, completion: nil)
+//    }
 }
 
     
