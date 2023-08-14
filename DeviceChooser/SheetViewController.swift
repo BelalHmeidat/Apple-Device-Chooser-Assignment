@@ -50,7 +50,6 @@ class SheetViewController: UIViewController {
             }
         
         }
-        
         var color : UIColor {
             switch self{
             case .iPhone :
