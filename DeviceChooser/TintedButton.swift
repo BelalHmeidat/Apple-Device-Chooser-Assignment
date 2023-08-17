@@ -20,23 +20,24 @@ class TintedButton: UIButton{
         fatalError("init(coder:) has not been implemented")
     }
     
-//    static var products : [Product] = []
-    static var indexes : [Int] = []
     
     let index : Int
     
     init(title: String, icon: UIImage, bgColor: UIColor, index : Int ){
         self.index = index
         super.init(frame: .zero)
-        configuration = .tinted()
-        configuration?.title = title
-        configuration?.image = icon
-        configuration?.baseBackgroundColor = bgColor
-        configuration?.baseForegroundColor = bgColor
-        configuration?.cornerStyle = .small
+        self.tintColor = bgColor
+        self.frame = CGRect(x: 100, y: 200, width: 200, height: 50)
+        self.setTitle(title, for: .normal)
+        self.layer.cornerRadius = 8
+
+//        configuration = .tinted()
+//        configuration?.title = title
+//        configuration?.image = icon
+//        configuration?.baseBackgroundColor = bgColor
+//        configuration?.baseForegroundColor = bgColor
+//        configuration?.cornerStyle = .small
         translatesAutoresizingMaskIntoConstraints = false
-//        self.tintColor = bgColor
-//        self.setTitle(title, for: .normal)
         
 //        TintedButton.buttons.append(self)
         
