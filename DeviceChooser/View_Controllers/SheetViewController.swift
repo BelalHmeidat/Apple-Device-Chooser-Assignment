@@ -12,6 +12,11 @@ protocol SheetViewControllerDelegate: AnyObject {
     func didSelectOption(image: UIImage, labelText: String)
 }
 
+struct ButtonsSize{
+    static let buttonWidth = 250
+    static let buttonHeight = 50
+}
+
 
 
 class SheetViewController: UIViewController {
@@ -51,13 +56,12 @@ class SheetViewController: UIViewController {
     
     //set the constraints for a button
     private func layoutButton(button : UIButton, space: CGFloat){
-        let btWidth = 250
-        let btHeight = 50
+        
         NSLayoutConstraint.activate([
             button.centerYAnchor.constraint(equalTo: view.topAnchor, constant: CGFloat(space)),
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.widthAnchor.constraint(equalToConstant: CGFloat(btWidth)),
-            button.heightAnchor.constraint(equalToConstant: CGFloat(btHeight))
+            button.widthAnchor.constraint(equalToConstant: CGFloat(ButtonsSize.buttonWidth)),
+            button.heightAnchor.constraint(equalToConstant: CGFloat(ButtonsSize.buttonHeight))
         ])
     }
     
