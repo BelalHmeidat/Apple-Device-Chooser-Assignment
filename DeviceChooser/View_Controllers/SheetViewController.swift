@@ -12,55 +12,15 @@ protocol SheetViewControllerDelegate: AnyObject {
     func didSelectOption(image: UIImage, labelText: String)
 }
 
-struct Product {
-    private var _name : String
-    private var _image : UIImage
-    private var _icon : UIImage
-    private var _color : UIColor
-    
-    init(name: String, image: UIImage, icon: UIImage, color: UIColor) {
-        self._name = name
-        self._image = image
-        self._color = color
-        self._icon = icon
-    }
-        
-        var name : String {
-            get {
-                return self._name
-            }
-        }
-        
-        var image : UIImage {
-            get {
-                return self._image
-            }
-        }
-        
-        var icon : UIImage {
-            get {
-                return self._icon
-            }
-        }
-        
-        var color : UIColor {
-            get {
-                return self._color
-            }
-        }
 
-
-    
-    
-}
 
 class SheetViewController: UIViewController {
-
-    private var iPhone = Product(name: "iPhone", image: UIImage(named: "iPhone.jpg")!, icon: UIImage(systemName: "iphone")!, color: UIColor(named: "iPhoneColor")!)
-    private var iPad = Product(name: "iPad", image: UIImage(named: "iPad.jpeg")!, icon: UIImage(systemName: "ipad.gen1")!, color: UIColor(named: "iPadColor")!)
-    private var macbook = Product(name: "Macbook", image: UIImage(named: "Macbook.jpg")!, icon: UIImage(systemName: "laptopcomputer")!, color: UIColor(named: "MacColor")!)
     
-    private var products : [Product] = []
+    private var products : [Product] = [
+        Product(name: "iPhone", image: UIImage(named: "iPhone.jpg")!, icon: UIImage(systemName: "iphone")!, color: UIColor(named: "iPhoneColor")!),
+        Product(name: "iPad", image: UIImage(named: "iPad.jpeg")!, icon: UIImage(systemName: "ipad.gen1")!, color: UIColor(named: "iPadColor")!),
+        Product(name: "Macbook", image: UIImage(named: "Macbook.jpg")!, icon: UIImage(systemName: "laptopcomputer")!, color: UIColor(named: "MacColor")!)
+    ]
 
     
     
@@ -68,7 +28,6 @@ class SheetViewController: UIViewController {
     
     
     override func viewDidLoad() {
-        products = [iPhone, iPad, macbook]
         super.viewDidLoad()
         view.backgroundColor = .white
         createAllButtons(products: products)
