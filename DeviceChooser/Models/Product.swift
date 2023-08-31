@@ -21,32 +21,24 @@ struct Product {
         self._color = color
         self._icon = icon
     }
-        
         var name : String {
             get {
                 return self._name
             }
         }
-        
         var image : UIImage {
             get {
                 return self._image
             }
         }
-        
         var icon : UIImage {
             get {
                 return self._icon
             }
         }
-        
         var color : UIColor {
             get {
                 return self._color
             }
         }
-
-
-    
-    
 }

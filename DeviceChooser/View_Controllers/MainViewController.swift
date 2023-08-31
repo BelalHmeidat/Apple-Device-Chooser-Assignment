@@ -10,7 +10,6 @@ import UIKit
 
 // the main view contoller with a changing image, label, and fixed products button
 class MainViewController: UIViewController {
-
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var label: UILabel!
@@ -26,8 +25,6 @@ class MainViewController: UIViewController {
         // giving an icon to the button
         button.setImage(UIImage(systemName: "apple.logo"), for: .normal)
     }
-    
-    
     
     // creating a sheetview that will have the products buttons and presenting it
     func showMyViewControllerInACustomizedSheet() {
