@@ -34,7 +34,7 @@
                                     <action selector="showSheet:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7ZX-21-csF"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRg-F5-lSe">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRg-F5-lSe">
                                 <rect key="frame" x="18" y="323" width="357" height="101.66666666666669"/>
                                 <string key="text">dfjakfk akfjakf afkja;kfjaklfjkajfkajf ajfkka kfjka fkak fkaf akfjakfjakf kakfajk fajfja fjkajfkaj fakf kajfka fkafkaj kfjakjfka fkjakfj akjfak jfakjfka jfkjakf akjfka fkajf kafjkaj fajfka fkajfkjakfakfj akfkajf kafk akf afj ajfjka</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>

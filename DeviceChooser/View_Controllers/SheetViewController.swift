@@ -41,12 +41,38 @@ class SheetViewController: UIViewController {
     
     //creating a button instance for each product, specify layout, and and binding it to an action
     private func createAllButtons(products : [Product]){
+        let buttonsList : UIStackView = UIStackView()
         for (i, product) in products.enumerated(){
             let bt = createButton(product: product, index: i) //creating an instance of TintedButton object for each product
-            view.addSubview(bt)
-            layoutButton(button: bt, space: CGFloat(100 * (i + 1))) //added 1 because i starts at 0
+            layoutButton(button: bt) //added 1 because i starts at 0
             bt.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside) //setting up button actions
+            buttonsList.addArrangedSubview(bt)
+            
         }
+    
+        
+        view.addSubview(buttonsList)
+        layoutButtonStack(buttonsList: buttonsList)
+        
+
+    }
+    
+    private func layoutButtonStack(buttonsList : UIStackView){
+        buttonsList.spacing = 40
+        buttonsList.axis = .vertical
+        buttonsList.distribution = .fill
+        buttonsList.alignment = .center
+        buttonsList.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            buttonsList.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            buttonsList.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+
+            ]
+
+        )
+
+        
     }
     // creating an instance of TintedButton object
     private func createButton(product: Product, index: Int) -> UIButton{
@@ -55,11 +81,9 @@ class SheetViewController: UIViewController {
     }
     
     //set the constraints for a button
-    private func layoutButton(button : UIButton, space: CGFloat){
+    private func layoutButton(button : UIButton){
         
         NSLayoutConstraint.activate([
-            button.centerYAnchor.constraint(equalTo: view.topAnchor, constant: CGFloat(space)),
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             button.widthAnchor.constraint(equalToConstant: CGFloat(ButtonsSize.buttonWidth)),
             button.heightAnchor.constraint(equalToConstant: CGFloat(ButtonsSize.buttonHeight))
         ])
