@@ -31,6 +31,15 @@ class SheetViewController: UIViewController {
     
     weak var delegate: SheetViewControllerDelegate?
     
+    private let buttonsStack : UIStackView = {
+        var buttonsStack = UIStackView()
+        buttonsStack.spacing = 40
+        buttonsStack.axis = .vertical
+        buttonsStack.translatesAutoresizingMaskIntoConstraints = false
+        return buttonsStack
+    }()
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,30 +50,26 @@ class SheetViewController: UIViewController {
     
     //creating a button instance for each product, specify layout, and and binding it to an action
     private func createAllButtons(products : [Product]){
-        let buttonsList : UIStackView = UIStackView()
         for (i, product) in products.enumerated(){
             let bt = createButton(product: product, index: i) //creating an instance of TintedButton object for each product
             layoutButton(button: bt)
             bt.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside) //setting up button actions
-            buttonsList.addArrangedSubview(bt)
+            buttonsStack.addArrangedSubview(bt)
             
         }
     
         
-        view.addSubview(buttonsList)
-        layoutButtonStack(buttonsList: buttonsList)
+        view.addSubview(buttonsStack)
+        layoutButtonStack(buttonsList: buttonsStack)
         
 
     }
     
     private func layoutButtonStack(buttonsList : UIStackView){
-        buttonsList.spacing = 40
-        buttonsList.axis = .vertical
-        buttonsList.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            buttonsList.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            buttonsList.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buttonsStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            buttonsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
             ]
 
