@@ -27,7 +27,6 @@ class TintedButton: UIButton{
         self.backgroundColor = bgColor.withAlphaComponent(0.1) //same as title color but lighter (adjusted using alpha)
         self.setImage(icon, for: .normal)
         self.tintColor = bgColor //needed to make the icon tinted otherwise it will be default color
-        self.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0,  right: 15) //space between the icon and the text of the button
         translatesAutoresizingMaskIntoConstraints = false //constraints will be manually set
     }
     

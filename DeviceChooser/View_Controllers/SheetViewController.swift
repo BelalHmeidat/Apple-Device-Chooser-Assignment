@@ -24,7 +24,7 @@ class SheetViewController: UIViewController {
     private var products : [Product] = [
         Product(name: "iPhone", image: UIImage(named: "iPhone.jpg")!, icon: UIImage(systemName: "iphone")!, color: UIColor(named: "iPhoneColor")!),
         Product(name: "iPad", image: UIImage(named: "iPad.jpeg")!, icon: UIImage(systemName: "ipad.gen1")!, color: UIColor(named: "iPadColor")!),
-        Product(name: "Macbook", image: UIImage(named: "Macbook.jpg")!, icon: UIImage(systemName: "laptopcomputer")!, color: UIColor(named: "MacColor")!)
+        Product(name: "Macbook", image: UIImage(named: "Macbook.jpg")!, icon: UIImage(systemName: "laptopcomputer")!, color: UIColor(named: "macColor")!)
     ]
 
     
@@ -44,7 +44,7 @@ class SheetViewController: UIViewController {
         let buttonsList : UIStackView = UIStackView()
         for (i, product) in products.enumerated(){
             let bt = createButton(product: product, index: i) //creating an instance of TintedButton object for each product
-            layoutButton(button: bt) //added 1 because i starts at 0
+            layoutButton(button: bt)
             bt.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside) //setting up button actions
             buttonsList.addArrangedSubview(bt)
             
@@ -60,8 +60,6 @@ class SheetViewController: UIViewController {
     private func layoutButtonStack(buttonsList : UIStackView){
         buttonsList.spacing = 40
         buttonsList.axis = .vertical
-        buttonsList.distribution = .fill
-        buttonsList.alignment = .center
         buttonsList.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
@@ -80,7 +78,7 @@ class SheetViewController: UIViewController {
         return button
     }
     
-    //set the constraints for a button
+    //set the constraints for button in the stackview
     private func layoutButton(button : UIButton){
         
         NSLayoutConstraint.activate([
